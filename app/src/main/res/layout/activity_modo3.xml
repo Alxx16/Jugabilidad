@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".Modo3_Activity"
+    android:background="@drawable/fondo" ><!--Link -->
+
+        <!-- Bara de Progreso -->
+        <ProgressBar
+            android:id="@+id/jugabilidad2_pgrBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <!-- Titulo -->
+    <TextView
+        android:id="@+id/jugabilidad2_txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jugabilidad2_pgrBar"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Arma la Respuesta"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="27dp" />
+
+
+        <!-- Imagen de Mascota -->
+        <ImageView
+            android:id="@+id/jugabilidad2_imvMascota"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/jugabilidad2_txtTitulo"
+            android:layout_centerInParent="true"
+            android:src="@drawable/luna_mascota" />
+    <!-- Boton para Sonido -->
+
+    <!-- Preguntas -->
+    <ImageButton
+        android:id="@+id/jugabilidad2_imbVoz"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/jugabilidad2_txtTitulo"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="64dp"
+        android:layout_toRightOf="@id/jugabilidad2_imvMascota"
+        android:background="@drawable/audio_blanco_icono" />
+
+    <TextView
+        android:id="@+id/jugabilidad2_txtPregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jugabilidad2_imvMascota"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Pregunta"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+
+        <!-- Espacio para respuestas -->
+    <FrameLayout
+        android:id="@+id/jugabilidad2_fmlRespuestas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jugabilidad2_txtPregunta"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="7dp">
+
+        <com.nex3z.flowlayout.FlowLayout
+            android:id="@+id/jugabilidad2_sentence_line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:flFlow="true" />
+
+        <View
+            style="@style/split_line_horizontal"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"/>
+
+        <View
+            style="@style/split_line_horizontal"
+            android:layout_marginTop="60dp"
+            android:backgroundTint="@color/white" />
+    </FrameLayout>
+
+        <!-- Grid de respuestas -->
+
+    <GridView
+        android:id="@+id/jugabilidad2_grdPalabras"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_below="@id/jugabilidad2_fmlRespuestas"
+        android:layout_marginTop="5dp"
+        android:numColumns="3"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="15dp">
+
+    </GridView>
+        <!-- android:columnWidth="10dp"
+    android:background="@drawable/shape_jugabilidad2_gridview"-->
+
+        <!-- Boton para continuar -->
+
+        <Button
+            android:id="@+id/jugabilidad2_modo_3_btn_confirmar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_jugabilidad2_bntconfirmar"
+            android:fontFamily="@font/poppins_bold"
+            android:text="CONFIRMAR"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:backgroundTint="@null" />
+</RelativeLayout>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+
+    >
+
+   <ProgressBar
+       android:id="@+id/jugabilidad1_ProgressBar"
+       android:layout_gravity="center"
+       android:layout_width="340dp"
+       android:layout_height="wrap_content"
+       style="?android:attr/progressBarStyleHorizontal">
+
+   </ProgressBar>
+   <TextView
+       android:id="@+id/jugabilidad1_txt_pregunta"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+      android:text="Pregunta"
+       android:textSize="30dp"
+       android:textAlignment="center"
+
+      >
+
+   </TextView>
+
+   <RelativeLayout
+
+       android:layout_width="match_parent"
+       android:layout_height="140dp"
+
+
+      >
+
+      <ImageView
+          android:id="@+id/jugabilidad1_img_mascota"
+          android:layout_width="120dp"
+          android:layout_height="120dp"
+          android:layout_centerInParent="true"
+          android:src="@android:color/holo_blue_bright">
+
+      </ImageView>
+
+      <ImageView
+          android:id="@+id/jugabilidad1_img_audio"
+          android:layout_width="80dp"
+          android:layout_height="80dp"
+          android:layout_centerInParent="true"
+          android:layout_toRightOf="@+id/jugabilidad1_img_mascota"
+          android:src="@android:color/holo_orange_light">
+
+      </ImageView>
+
+
+
+   </RelativeLayout>
+
+
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
+
+
+      <RelativeLayout
+          android:id="@+id/jugabilidad1_segm1"
+          android:layout_width="210dp"
+          android:layout_height="210dp">
+
+         <ImageView
+             android:id="@+id/jugabilidad1_Selected_imgShape1"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@drawable/box_white">
+         </ImageView>
+
+         <ImageView
+             android:id="@+id/jugabilidad1_Unselected_imgShape1"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@drawable/box_unselected"></ImageView>
+
+         <ImageButton
+             android:id="@+id/jugabilidad1_btn_opcion1"
+             android:layout_width="180dp"
+             android:layout_height="170dp"
+             android:layout_alignParentTop="true"
+             android:layout_centerInParent="true"
+             android:layout_marginTop="7dp">
+
+         </ImageButton>
+
+         <TextView
+             android:layout_marginBottom="5dp"
+             android:id="@+id/jugabilidad1_txt_opcion1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:text="Opcion 1"
+             android:textAlignment="center"
+             android:textSize="20dp"
+
+             >
+
+         </TextView>
+
+      </RelativeLayout>
+
+
+      <RelativeLayout
+          android:layout_toRightOf="@+id/jugabilidad1_segm1"
+          android:id="@+id/jugabilidad1_segm2"
+          android:layout_width="210dp"
+          android:layout_height="210dp">
+
+         <ImageView
+             android:id="@+id/jugabilidad1_Selected_imgShape2"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@drawable/box_white">
+
+         </ImageView>
+
+         <ImageView
+             android:id="@+id/jugabilidad1_Unselected_imgShape2"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@drawable/box_unselected"></ImageView>
+
+         <ImageButton
+             android:id="@+id/jugabilidad1_btn_opcion2"
+             android:layout_width="180dp"
+             android:layout_height="170dp"
+             android:layout_alignParentTop="true"
+             android:layout_centerInParent="true"
+             android:layout_marginTop="7dp">
+
+         </ImageButton>
+
+         <TextView
+             android:id="@+id/jugabilidad1_txt_opcion2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:layout_marginBottom="5dp"
+             android:text="Opcion 1"
+             android:textAlignment="center"
+             android:textSize="20dp">
+
+         </TextView>
+
+      </RelativeLayout>
+
+
+      <RelativeLayout
+          android:layout_below="@+id/jugabilidad1_segm1"
+          android:id="@+id/jugabilidad1_segm3"
+          android:layout_width="210dp"
+          android:layout_height="210dp">
+
+         <ImageView
+             android:id="@+id/jugabilidad1_Selected_imgShape3"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@drawable/box_white">
+
+         </ImageView>
+         <ImageView
+             android:id="@+id/jugabilidad1_Unselected_imgShape3"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@drawable/box_unselected">
+         </ImageView>
+
+         <ImageButton
+             android:id="@+id/jugabilidad1_btn_opcion3"
+             android:layout_width="180dp"
+             android:layout_height="170dp"
+             android:layout_alignParentTop="true"
+             android:layout_centerInParent="true"
+             android:layout_marginTop="7dp">
+
+         </ImageButton>
+
+         <TextView
+             android:layout_marginBottom="5dp"
+             android:id="@+id/jugabilidad1_txt_opcion3"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:text="Opcion 1"
+             android:textAlignment="center"
+             android:textSize="20dp">
+
+         </TextView>
+
+      </RelativeLayout>
+
+
+      <RelativeLayout
+          android:layout_below="@+id/jugabilidad1_segm2"
+          android:layout_toRightOf="@+id/jugabilidad1_segm3"
+          android:id="@+id/jugabilidad1_segm4"
+          android:layout_width="210dp"
+          android:layout_height="210dp">
+
+         <ImageView
+             android:id="@+id/jugabilidad1_Selected_imgShape4"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@drawable/box_white">
+
+         </ImageView>
+         <ImageView
+             android:id="@+id/jugabilidad1_Unselected_imgShape4"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@drawable/box_unselected">
+         </ImageView>
+
+         <ImageButton
+             android:id="@+id/jugabilidad1_btn_opcion4"
+             android:layout_width="180dp"
+             android:layout_height="170dp"
+             android:layout_alignParentTop="true"
+             android:layout_centerInParent="true"
+             android:layout_marginTop="7dp">
+
+         </ImageButton>
+
+         <TextView
+             android:id="@+id/jugabilidad1_txt_opcion4"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:layout_marginBottom="5dp"
+             android:text="Opcion 4"
+             android:textAlignment="center"
+             android:textSize="20dp">
+
+         </TextView>
+
+      </RelativeLayout>
+
+   </RelativeLayout>
+
+   <Button
+       android:id="@+id/jugabilidad1_btn_continuar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Continuar"
+
+       >
+
+   </Button>
+
+
+
+</LinearLayout>
