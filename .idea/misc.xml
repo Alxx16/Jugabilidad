@@ -3,15 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/drawable/shape_jugabilidad2_bntconfirmar.xml" value="0.159" />
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/drawable/shape_jugabilidad2_cuadro_de_palabra.xml" value="0.159" />
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/drawable/shape_jugabilidad2_gridview.xml" value="0.162" />
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/layout/activity_jnj_main.xml" value="0.10052083333333334" />
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/layout/activity_loader.xml" value="0.25" />
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/layout/activity_modo1.xml" value="0.25" />
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/layout/activity_modo3.xml" value="0.264" />
-        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/layout/gridview.xml" value="0.234375" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.273" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/ic_fondo.xml" value="0.273" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/ic_home_icono.xml" value="0.273" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.273" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/progress_bar_jugabilidades.xml" value="0.2265" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shape_jugabilidad2_correcto.xml" value="0.387" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shape_jugabilidad2_general.xml" value="0.387" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shape_jugabilidad2_incorrecto.xml" value="0.387" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shape_jugabilidad2_seleccionaropcion.xml" value="0.387" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shapes_jugabilidad_2.xml" value="0.387" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/layout/activity_pareo.xml" value="0.21979166666666666" />
+        <entry key="..\:/Users/User/Desktop/DSVI Desarollo Jugabilidad 2/Proyecto-Jugabilidad-2/app/src/main/res/layout/pareolistview_template.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/drawable/ic_home_icono.xml" value="0.15" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shape_jugabilidad2_correcto.xml" value="0.1525" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shape_jugabilidad2_general.xml" value="0.1" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shape_jugabilidad2_incorrecto.xml" value="0.1525" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/drawable/shape_jugabilidad2_seleccionaropcion.xml" value="0.1" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/layout/activity_pareo.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/layout/pareo_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/layout/pareolistview_template.xml" value="0.3265625" />
+        <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugabilidad2/app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>
   </component>

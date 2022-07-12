@@ -1,43 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jugablidad_1">
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    package="com.example.jugabilidad2">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Jugablidad_1">
+        android:theme="@style/Theme.Jugabilidad2">
         <activity
-            android:name=".RetroalimentacionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PuntosTotalesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Modo4_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Modo3_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Modo2_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Modo1_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".LoaderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".jnjMainActivity"
+            android:name=".PareoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
