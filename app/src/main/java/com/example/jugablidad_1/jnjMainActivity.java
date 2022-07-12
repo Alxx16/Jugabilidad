@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.jugablidad_1.Controller.Jugabilidad;
+import com.example.jugablidad_1.Controller.Jugabildad;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,7 +27,7 @@ public class jnjMainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Jugabilidad jug = new Jugabilidad(getApplicationContext());
+                Jugabildad jug = new Jugabildad(getApplicationContext());
                 jug.borrarDatosPreferences();
                 jug.obtenerDatosJugabilidad(id);
                 jug.obtenerDatosPareo(id);

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.jugablidad_1.Controller.Jugabilidad;
+import com.example.jugablidad_1.Controller.Jugabildad;
 import com.example.jugablidad_1.Controller.SharedPreferencesController;
 import com.example.jugablidad_1.Models.Responses.PreguntasResponse;
 
@@ -46,7 +46,7 @@ public class Modo2_Activity extends AppCompatActivity {
 
     }
     private void obtenerInfoPregunta() {
-        Jugabilidad jugabildad = new Jugabilidad(this);
+        Jugabildad jugabildad = new Jugabildad(this);
         String ids = sp.leer(this,"preguntas_id");
         String [] aux = ids.split(",");
         int id = Integer.parseInt(aux[aux.length-1]);

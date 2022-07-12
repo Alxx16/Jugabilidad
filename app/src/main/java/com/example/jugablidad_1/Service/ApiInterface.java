@@ -17,6 +17,4 @@ public interface ApiInterface {
     @GET("/preguntas_pareo/{temaid}")
     Call<List<PareoResponse>> obtenerListadoPareo(@Path("temaid") int tema_id);
 
-
-
 }

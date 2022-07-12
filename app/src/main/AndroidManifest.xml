@@ -10,7 +10,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Jugablidad_1">
         <activity
             android:name=".RetroalimentacionActivity"
@@ -19,7 +18,7 @@
             android:name=".PuntosTotalesActivity"
             android:exported="false" />
         <activity
-            android:name=".Modo4_Activity"
+            android:name=".PareoActivity"
             android:exported="false" />
         <activity
             android:name=".Modo3_Activity"

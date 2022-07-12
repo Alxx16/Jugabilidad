@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.jugablidad_1.Controller.Jugabilidad;
+import com.example.jugablidad_1.Controller.Jugabildad;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,7 +20,7 @@ public class LoaderActivity extends AppCompatActivity {
     }
 
     private void cambiarPregunta() {
-        Jugabilidad jug = new Jugabilidad(getApplicationContext());
+        Jugabildad jug = new Jugabildad(getApplicationContext());
 
         TimerTask timertask = new TimerTask() {
             @Override

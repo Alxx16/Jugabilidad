@@ -4,16 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 import com.example.jugablidad_1.Helper.DbHelper;
-import com.example.jugablidad_1.Models.Pareo;
+import com.example.jugablidad_1.Entidades.Pareo;
 import com.example.jugablidad_1.Models.Responses.PareoResponse;
 import com.example.jugablidad_1.Models.Responses.PreguntasResponse;
 import com.example.jugablidad_1.Modo1_Activity;
 import com.example.jugablidad_1.Modo2_Activity;
 import com.example.jugablidad_1.Modo3_Activity;
-import com.example.jugablidad_1.Modo4_Activity;
+import com.example.jugablidad_1.PareoActivity;
 import com.example.jugablidad_1.PuntosTotalesActivity;
 import com.example.jugablidad_1.Service.ApiInterface;
 import com.example.jugablidad_1.Service.ApiService;
@@ -25,14 +24,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Jugabilidad {
+public class Jugabildad {
 
     private ApiInterface api;
     private Context context;
     SharedPreferencesController sp = new SharedPreferencesController();
 
 
-    public Jugabilidad(Context context) {
+    public Jugabildad (Context context) {
         this.context = context;
     }
 
@@ -68,7 +67,7 @@ public class Jugabilidad {
             public void onResponse(Call<List<PareoResponse>> call, Response<List<PareoResponse>> response) {
                 List<PareoResponse> listaPareo = response.body();
                 Pareo.actualizarPareo(context);
-                listaPareo = Pareo.reordenarPareo(listaPareo);
+                //listaPareo = Pareo.reordenarPareo(listaPareo);
                 for(PareoResponse PareoB : listaPareo ){
                     Pareo pareo = new Pareo(
                             PareoB.getPregunta_id(),
@@ -123,7 +122,7 @@ public class Jugabilidad {
                 modo = new Intent(context, Modo3_Activity.class);
                 break;
             case 4:
-                modo = new Intent(context, Modo4_Activity.class);
+                modo = new Intent(context, PareoActivity.class);
                 break;
         }
 
@@ -217,7 +216,7 @@ public class Jugabilidad {
 
     public List<PreguntasResponse> getPregunta(int id_preg) {
         List<PreguntasResponse> preguntas = new ArrayList<>();
-        String query = "SELECT pregunta_id, tematica_id, modo, pregunta, respuesta, retroalimentacion, opc, imagen_pregunta, audio_pregunta, imagen_respuesta, audio_respuesta, audio_retroalimentacion FROM preguntas_respuestas WHERE pregunta_id = "+id_preg;
+        String query = "SELECT pregunta_id, tematica_id, modo, pregunta, respuesta, retroalimentacion, opc FROM preguntas_respuestas WHERE pregunta_id = "+id_preg;
         try {
             DbHelper dbHelper = new DbHelper(context, "proyecto_ds6");
             SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -235,11 +234,6 @@ public class Jugabilidad {
                         preg.setOpcion_resp(c.getString(4));
                         preg.setRetroalimentacion(c.getString(5));
                         preg.setRespuesta(c.getInt(6));
-                        preg.setImagen_pregunta(c.getString(7));
-                        preg.setAudio_pregunta(c.getString(8));
-                        preg.setImagen_respuesta(c.getString(9));
-                        preg.setAudio_respuesta(c.getString(10));
-                        preg.setAudio_retroalimentacion(c.getString(11));
                         preguntas.add(preg);
                     } while (c.moveToNext());
                 }
