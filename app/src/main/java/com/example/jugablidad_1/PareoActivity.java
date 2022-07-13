@@ -22,6 +22,7 @@ import com.example.jugablidad_1.Adapter.PareoListviewAdapter;
 import com.example.jugablidad_1.Controller.SharedPreferencesController;
 import com.example.jugablidad_1.Entidades.Pareo;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,12 +37,10 @@ public class PareoActivity extends AppCompatActivity {
     private Button btn_siguiente;
     private ListView lstPareo;
     private ListView lstPareo2;
-    private Button btnpareo;
     private TextView lblPareo1, lblPareo2;
-    private ProgressBar prgbar;
+    private ProgressBar prgbar;//Barra de progreso
     private int idPareo1=0,idPareo2=0,avance=0,idPreguntaPareo=0;
     private String opcPareo1,opcPareo2;
-    private List<Integer> numerosPareo = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,34 +118,38 @@ public class PareoActivity extends AppCompatActivity {
                 if(lblPareo1!=null){
                     lblPareo1.setBackgroundResource(R.drawable.shape_jugabilidad2_general);
                 }
-                //#Se asignará el shape color amarillo al actual elemento seleccionado
-                view.findViewById(R.id.lblPareoTemplate).setBackgroundResource(R.drawable.shape_jugabilidad2_seleccionaropcion);
-                //#Se le asignara el valor del del textview del texto mostrado para su posterior uso en cambios de vista
-                lblPareo1=view.findViewById(R.id.lblPareoTemplate);
-                //#Tomar el enlace del audio del textview
-                TextView a = view.findViewById(R.id.lblPareoAudio);
-                //#Parsear el textview a un string para poder usarlo
-                String audio = a.getText().toString();
-                //#parsear la variable audio aun uri para poder buscarlá en la
-                MediaPlayer mediaPlayer =new MediaPlayer();
-                try {
-                    mediaPlayer.stop();
-                    mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/"+audio))));
-                    mediaPlayer.prepare();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                mediaPlayer.start();
-                //#Se le asignara el valor del del textview a variable textview para tomar el valor
-                TextView txt = (TextView) view.findViewById(R.id.lblPareoTemplate);
-                //#Parsear el textview de la variable txt a un string para poder usarlo
-                opcPareo1 = txt.getText().toString();
-                //#Método obtenerIdPareo es utilizado para obtener el id del elemento seleccionado del listview
-                idPareo1= pareo.obtenerIdPareo(opcPareo1,getApplicationContext());
-                //#Método compararPreguntas es utilizado para comparar los dos elementos seleccionados de cada listview
-                //if(opcPareo1!=null && opcPareo2!=null){
+                TextView estate =view.findViewById(R.id.lblPareoTemplate);
+                if(estate.isEnabled()!=false){
+                    lstPareo.getChildAt(i).setEnabled(false);
+                    //#Se asignará el shape color amarillo al actual elemento seleccionado
+                    view.findViewById(R.id.lblPareoTemplate).setBackgroundResource(R.drawable.shape_jugabilidad2_seleccionaropcion);
+                    //#Se le asignara el valor del del textview del texto mostrado para su posterior uso en cambios de vista
+                    lblPareo1=view.findViewById(R.id.lblPareoTemplate);
+                    //#Tomar el enlace del audio del textview
+                    TextView a = view.findViewById(R.id.lblPareoAudio);
+                    //#Parsear el textview a un string para poder usarlo
+                    String audio = a.getText().toString();
+                    MediaPlayer mediaPlayer =new MediaPlayer();
+                    try {
+                        mediaPlayer.stop();
+                        //#parsear la variable audio a uri para poder buscarlá en la la carpeta del api
+                        mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/"+audio))));
+                        mediaPlayer.prepare();
+                        mediaPlayer.start();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //mediaPlayer.start();
+                    //#Se le asignara el valor del del textview a variable textview para tomar el valor
+                    TextView txt = (TextView) view.findViewById(R.id.lblPareoTemplate);
+                    //#Parsear el textview de la variable txt a un string para poder usarlo
+                    opcPareo1 = txt.getText().toString();
+                    //#Método obtenerIdPareo es utilizado para obtener el id del elemento seleccionado del listview
+                    idPareo1= pareo.obtenerIdPareo(opcPareo1,getApplicationContext());
+                    System.out.println(idPareo1);
+                    //#Método compararPreguntas es utilizado para comparar los dos elementos seleccionados de cada listview
                     compararPreguntas(idPareo1,idPareo2);
-                //}
+                }
             }
         });
 
@@ -156,25 +159,30 @@ public class PareoActivity extends AppCompatActivity {
                 if(lblPareo2 !=null){
                     lblPareo2.setBackgroundResource(R.drawable.shape_jugabilidad2_general);
                 }
-                view.findViewById(R.id.lblPareoTemplate).setBackgroundResource(R.drawable.shape_jugabilidad2_seleccionaropcion);
-                lblPareo2 =view.findViewById(R.id.lblPareoTemplate);
-                TextView a = view.findViewById(R.id.lblPareoAudio);
-                String audio = a.getText().toString();
-                MediaPlayer mediaPlayer =new MediaPlayer();
-                try {
-                    mediaPlayer.stop();
-                    mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/"+audio))));
-                    mediaPlayer.prepare();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                mediaPlayer.start();
-                TextView txt = (TextView) view.findViewById(R.id.lblPareoTemplate);
-                opcPareo2 = txt.getText().toString();
-                idPareo2= pareo.obtenerIdPareo(opcPareo2,getApplicationContext());
-                //if(opcPareo1!=null && opcPareo2!=null){
+                TextView estate =view.findViewById(R.id.lblPareoTemplate);
+                if(estate.isEnabled()!=false){
+                    view.findViewById(R.id.lblPareoTemplate).setBackgroundResource(R.drawable.shape_jugabilidad2_seleccionaropcion);
+                    lblPareo2 =view.findViewById(R.id.lblPareoTemplate);
+                    TextView a = view.findViewById(R.id.lblPareoAudio);
+                    String audio = a.getText().toString();
+                    MediaPlayer mediaPlayer =new MediaPlayer();
+                    try {
+                        mediaPlayer.stop();
+                        mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/"+audio))));
+                        mediaPlayer.prepare();
+                        mediaPlayer.start();
+                    } catch (FileNotFoundException e){
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //mediaPlayer.start();
+                    TextView txt = (TextView) view.findViewById(R.id.lblPareoTemplate);
+                    opcPareo2 = txt.getText().toString();
+                    idPareo2= pareo.obtenerIdPareo(opcPareo2,getApplicationContext());
+                    System.out.println(idPareo2);
                     compararPreguntas(idPareo1,idPareo2);
-                //}
+                }
             }
         });
     }
@@ -184,13 +192,9 @@ public class PareoActivity extends AppCompatActivity {
         if(opcPareo1!=null && opcPareo2!=null){
             //#Condicional donde solo entra al tener los elementos con el mismo id, que significa que es correcto
             if(p1==p2){
-                //#Al momento de entrar a la condicional se le asignara un shape verde que mostrará en pantalla como una señal de
-                //#Correcto
+                //#Al momento de entrar a la condicional se le asignara un shape verde que mostrará en pantalla como una señal de Correcto
                 lblPareo1.setBackgroundResource(R.drawable.shape_jugabilidad2_correcto);
                 lblPareo2.setBackgroundResource(R.drawable.shape_jugabilidad2_correcto);
-                //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna un texto "vacío" a la vista
-                lblPareo1.setText("");
-                lblPareo2.setText("");
                 //#En las variables de las opciones seleccionadas que guardan los id's se le asigna null
                 opcPareo1=null;
                 opcPareo2=null;
@@ -198,19 +202,16 @@ public class PareoActivity extends AppCompatActivity {
                 avance = avance + 1;
                 //#Condicional dondo entrará solo al avance a ver respondido los 5 pares correctamente
                 if(avance == 5){ ;
-                    //prgbar.setProgress(6);
-                    //#Se avtivará el botón para seguir a la próxima pregunta
+                    //#Se activará el botón para seguir a la próxima pregunta
                     btn_siguiente.setEnabled(true);
-                    //#Se revelara el botón para seguir a la próxima pregunta
-                    btnpareo.setVisibility(View.VISIBLE);
                 }
                 //#Se le asigno un momento para que se activará estas instrucciones
                 TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
                         //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna que sean invisibles a la vista
-                        lblPareo1.setVisibility(View.INVISIBLE);
-                        lblPareo2.setVisibility(View.INVISIBLE);
+                        lblPareo1.setEnabled(false);
+                        lblPareo2.setEnabled(false);
                         //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna null para que no haya problemas de vista
                         lblPareo1= null;
                         lblPareo2= null;

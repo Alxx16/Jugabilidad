@@ -67,7 +67,7 @@ public class Jugabildad {
             public void onResponse(Call<List<PareoResponse>> call, Response<List<PareoResponse>> response) {
                 List<PareoResponse> listaPareo = response.body();
                 Pareo.actualizarPareo(context);
-                //listaPareo = Pareo.reordenarPareo(listaPareo);
+                //listaPareo = Pareo.reordenarPareo(listaPareo);Al desordenarlos directamente, se crea un problema al presentarlos en pantalla
                 for(PareoResponse PareoB : listaPareo ){
                     Pareo pareo = new Pareo(
                             PareoB.getPregunta_id(),

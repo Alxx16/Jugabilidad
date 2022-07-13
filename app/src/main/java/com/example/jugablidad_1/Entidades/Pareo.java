@@ -93,6 +93,7 @@ public class Pareo {
                     contentValues.put("tematica_id",this.getTematica_id());
                     contentValues.put("orden_pareo",this.getOrden_pareo());
                     contentValues.put("texto",this.getTexto());
+                    contentValues.put("audio",this.getAudio());
                     db.insert("pareo",null,contentValues);
             }
         }catch (Exception e){
@@ -149,7 +150,7 @@ public class Pareo {
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             if(db!=null){
                 String[] campos = new String[]{"orden_pareo"};
-                Cursor cursor = db.query("pareo",campos,"texto = " +"'"+texto+"'",null,null,null,null,null);
+                Cursor cursor = db.query("pareo",campos,"texto="+"'"+texto+"'",null,null,null,null,"1");
                 if(cursor.moveToFirst()){
                     do {
                         id = cursor.getInt(0);
