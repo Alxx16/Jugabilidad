@@ -69,7 +69,7 @@ public class Jugabilidad {
                 List<PareoResponse> listaPareo = response.body();
                 Pareo.actualizarPareo(context);
                 listaPareo = Pareo.reordenarPareo(listaPareo);
-                for(PareoResponse PareoB : listaPareo ){
+                for(PareoResponse PareoB : listaPareo){
                     Pareo pareo = new Pareo(
                             PareoB.getPregunta_id(),
                             PareoB.getTematica_id(),

@@ -4,28 +4,24 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.jugablidad_1.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class GridViewAdapter extends BaseAdapter {
-    GridView jugabilidad2_grdRespuesta_adapter;
-
+public class GridViewAdapterRespuesta  extends ArrayAdapter {
     Context context;
     List<String> respuesta;
-    List<String> respuestas_elegidas = new ArrayList<>();
 
-    public GridViewAdapter(Context context, List<String> respuestas, GridView respuestas_elegidas){
+    public GridViewAdapterRespuesta(Context context, List<String> respuestas) {
+        super(context, R.layout.jugabilidad2_gridview_adapter, respuestas);
         this.context = context;
         this.respuesta = respuestas;
-        this.jugabilidad2_grdRespuesta_adapter = respuestas_elegidas;
 
     }
+
     @Override
     public int getCount() {
         return respuesta.size();
@@ -44,35 +40,34 @@ public class GridViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if(convertView == null){
+        if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.jugabilidad2_gridview_adapter,null);
+            convertView = layoutInflater.inflate(R.layout.jugabilidad2_gridview_adapter, null);
         }
-        TextView  textos = (TextView)convertView.findViewById(R.id.jugabilidad2_contResp);
+
+        TextView textos = (TextView) convertView.findViewById(R.id.jugabilidad2_contResp);
         textos.setText(respuesta.get(position));
 
         textos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setVisibility(View.INVISIBLE);
+
+                respuesta.remove(position);
 
 
 
-                respuestas_elegidas.add(textos.getText().toString());
-                GridViewAdapterRespuesta adapter = new GridViewAdapterRespuesta(context, respuestas_elegidas);
-                jugabilidad2_grdRespuesta_adapter.setAdapter(adapter);
-
-                /*swapItems(respuesta);*/
+               /* swapItems(respuesta);*/
             }
         });
+
+
         return convertView;
     }
-    //ignora esto, es un metodo que estabamos intentando usar para regresar los textos a donde estaban
-    public void swapItems(List<String> itemsList){
+   //ignora esto, es un metodo que estabamos intentando usar para regresar los textos a donde estaban
+    public void swapItems(List<String> itemsList) {
         respuesta.clear();
         respuesta.addAll(itemsList);
         notifyDataSetChanged();
+
     }
-
-
 }

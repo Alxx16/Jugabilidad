@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,13 +28,17 @@ import com.nex3z.flowlayout.FlowLayout;
 
 public class Modo3_Activity extends AppCompatActivity {
 
+    ProgressBar jugabilidad2_pgrBa;
     TextView jugabilidad2_txtPregunta;
+    GridView jugabilidad2_grdRespuestas;
     GridView jugabilidad2_grdPalabras;
     FlowLayout sentenceLine;
     Button jugabilidad2_btn_confirmar;
     List<String> respuestas;
     ImageButton jugabilidad2_imbVoz;
     String audioP;
+
+    int currentProgress = 0;
 
     SharedPreferencesController spp = new SharedPreferencesController();
 
@@ -48,6 +53,11 @@ public class Modo3_Activity extends AppCompatActivity {
         jugabilidad2_btn_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                /*currentProgress = currentProgress + 10;
+                jugabilidad2_pgrBa.setProgress(currentProgress);
+                jugabilidad2_pgrBa.setMax(100);*/
+
                 Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
                 startActivity(pantallaRetro);
             }
@@ -55,8 +65,10 @@ public class Modo3_Activity extends AppCompatActivity {
     }
 
     private void InicializarControles() {
+        jugabilidad2_pgrBa = (ProgressBar) findViewById(R.id.jugabilidad2_pgrBar);
         jugabilidad2_txtPregunta = (TextView) findViewById(R.id.jugabilidad2_txtPregunta);
         /*sentenceLine = (FlowLayout)findViewById(R.id.jugabilidad2_sentence_line);*/
+        jugabilidad2_grdRespuestas = (GridView) findViewById(R.id.jugabilidad2_grdRespuestas);
         jugabilidad2_grdPalabras = (GridView) findViewById(R.id.jugabilidad2_grdPalabras);
         jugabilidad2_btn_confirmar = (Button) findViewById(R.id.jugabilidad2_modo_3_btn_confirmar);
         jugabilidad2_imbVoz = (ImageButton) findViewById(R.id.jugabilidad2_imbVoz);
@@ -73,9 +85,6 @@ public class Modo3_Activity extends AppCompatActivity {
         String pregunta = "";
         String opcCorrecta = "";
         String opcIncorrecta = "";
-
-
-
         //ARRAYLIST CON LOS DATOS DE LA PREGUNTA
         List<PreguntasResponse> preguntas = jugabildad.getPregunta(id);
 
@@ -101,7 +110,7 @@ public class Modo3_Activity extends AppCompatActivity {
     }
 
     public void SetearGrid() {
-        GridViewAdapter adapter = new GridViewAdapter(this, respuestas);
+        GridViewAdapter adapter = new GridViewAdapter(this, respuestas, jugabilidad2_grdRespuestas);
         jugabilidad2_grdPalabras.setAdapter(adapter);
 
     }
@@ -115,4 +124,8 @@ public class Modo3_Activity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 }
