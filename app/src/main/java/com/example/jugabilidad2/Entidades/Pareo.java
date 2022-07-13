@@ -139,7 +139,7 @@ public class Pareo {
                     do {
                         //#Asignar texto y audio al constructor de la clase Pareo(Entidad)
                         Pareo pareo = new Pareo(
-                               cursor.getString(0),
+                                cursor.getString(0),
                                 cursor.getString(1)
                         );
                         //#agregar datos cargados en el constructor de Pareo(Entidad) a la lista de tipo pareo
@@ -161,7 +161,7 @@ public class Pareo {
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             if(db!=null){
                 String[] campos = new String[]{"orden_pareo"};
-                Cursor cursor = db.query("pareo",campos,"texto = " +"'"+texto+"'",null,null,null,null,null);
+                Cursor cursor = db.query("pareo",campos,"texto="+"'"+texto+"'",null,null,null,null,"1");
                 if(cursor.moveToFirst()){
                     do {
                         id = cursor.getInt(0);

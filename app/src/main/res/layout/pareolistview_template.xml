@@ -10,7 +10,8 @@
         android:textAlignment="center"
         android:text="aaaaaaaaa"
         android:padding="2dp"
-        android:background="@drawable/shape_jugabilidad2_general"/>
+        android:background="@drawable/shape_jugabilidad2_general"
+        android:enabled="true"/>
 
     <TextView
         android:id="@+id/lblPareoAudio"
