@@ -19,6 +19,9 @@ public class GridViewAdapter extends BaseAdapter {
     Context context;
     List<String> respuesta;
     List<String> respuestas_elegidas = new ArrayList<>();
+    List<String> opcRespuestas = new ArrayList<>();
+
+
 
     public GridViewAdapter(Context context, List<String> respuestas, GridView respuestas_elegidas){
         this.context = context;
@@ -54,25 +57,35 @@ public class GridViewAdapter extends BaseAdapter {
         textos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 view.setVisibility(View.INVISIBLE);
-
-
-
                 respuestas_elegidas.add(textos.getText().toString());
                 GridViewAdapterRespuesta adapter = new GridViewAdapterRespuesta(context, respuestas_elegidas);
                 jugabilidad2_grdRespuesta_adapter.setAdapter(adapter);
 
+
+
                 /*swapItems(respuesta);*/
             }
-        });
+        }
+        );
         return convertView;
     }
+
+    public List<String> respuestas_probar() {
+        GridViewAdapterRespuesta adapter = new GridViewAdapterRespuesta(context, respuestas_elegidas);
+        opcRespuestas = adapter.respuesta_seleccionada();
+
+        return opcRespuestas;
+    }
+
     //ignora esto, es un metodo que estabamos intentando usar para regresar los textos a donde estaban
-    public void swapItems(List<String> itemsList){
+
+    /*public void swapItems(List<String> itemsList){
         respuesta.clear();
         respuesta.addAll(itemsList);
         notifyDataSetChanged();
-    }
+    }*/
 
 
 }

@@ -16,9 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jugablidad_1.Adaptadores.GridViewAdapter;
+import com.example.jugablidad_1.Adaptadores.GridViewAdapterRespuesta;
 import com.example.jugablidad_1.Controller.Jugabilidad;
 import com.example.jugablidad_1.Controller.SharedPreferencesController;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -32,36 +34,29 @@ public class Modo3_Activity extends AppCompatActivity {
     TextView jugabilidad2_txtPregunta;
     GridView jugabilidad2_grdRespuestas;
     GridView jugabilidad2_grdPalabras;
+
     FlowLayout sentenceLine;
-    Button jugabilidad2_btn_confirmar;
+
     List<String> respuestas;
     ImageButton jugabilidad2_imbVoz;
     String audioP;
-
+    String opcCorrecta;
+    String opcIncorrecta = "";
     int currentProgress = 0;
+
+    List<String> opcRespuesta = new ArrayList<>();
 
     SharedPreferencesController spp = new SharedPreferencesController();
 
-
+    /*currentProgress = currentProgress + 10;
+                    jugabilidad2_pgrBa.setProgress(currentProgress);
+                    jugabilidad2_pgrBa.setMax(100);*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo3);
         this.InicializarControles();
 
-
-        jugabilidad2_btn_confirmar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                /*currentProgress = currentProgress + 10;
-                jugabilidad2_pgrBa.setProgress(currentProgress);
-                jugabilidad2_pgrBa.setMax(100);*/
-
-                Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
-                startActivity(pantallaRetro);
-            }
-        });
     }
 
     private void InicializarControles() {
@@ -70,7 +65,6 @@ public class Modo3_Activity extends AppCompatActivity {
         /*sentenceLine = (FlowLayout)findViewById(R.id.jugabilidad2_sentence_line);*/
         jugabilidad2_grdRespuestas = (GridView) findViewById(R.id.jugabilidad2_grdRespuestas);
         jugabilidad2_grdPalabras = (GridView) findViewById(R.id.jugabilidad2_grdPalabras);
-        jugabilidad2_btn_confirmar = (Button) findViewById(R.id.jugabilidad2_modo_3_btn_confirmar);
         jugabilidad2_imbVoz = (ImageButton) findViewById(R.id.jugabilidad2_imbVoz);
         this.obtenerInfoPregunta();
         this.SetearGrid();
@@ -78,13 +72,15 @@ public class Modo3_Activity extends AppCompatActivity {
     }
 
     private void obtenerInfoPregunta() {
+
+
         Jugabilidad jugabildad = new Jugabilidad(this);
         String ids = spp.leer(this, "preguntas_id");
         String[] aux = ids.split(",");
         int id = Integer.parseInt(aux[aux.length - 1]);
         String pregunta = "";
-        String opcCorrecta = "";
-        String opcIncorrecta = "";
+       /* String opcCorrecta = "";*/
+        String opcIncorrecta= "";
         //ARRAYLIST CON LOS DATOS DE LA PREGUNTA
         List<PreguntasResponse> preguntas = jugabildad.getPregunta(id);
 
@@ -112,7 +108,6 @@ public class Modo3_Activity extends AppCompatActivity {
     public void SetearGrid() {
         GridViewAdapter adapter = new GridViewAdapter(this, respuestas, jugabilidad2_grdRespuestas);
         jugabilidad2_grdPalabras.setAdapter(adapter);
-
     }
 
     public void AudioPregunta() {
@@ -121,11 +116,46 @@ public class Modo3_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 MediaPlayer mp = MediaPlayer.create(getApplicationContext(), Uri.parse("http://192.168.0.17:8080/madres.mp3"));
                 mp.start();
+
             }
         });
     }
 
+    public void ComprobarResp (View view){
 
+        /*String str="";*/
+        GridViewAdapter adapter = new GridViewAdapter(this, respuestas, jugabilidad2_grdRespuestas);
+        opcRespuesta = adapter.respuestas_probar();
+
+        /*for (String resp : opcRespuesta) {
+            str+=resp+" ";
+        }*/
+       /* StringBuilder str = new StringBuilder();
+        for (String resp : opcRespuesta) {
+            str.append(resp);
+            str.append(" ");
+        }*/
+
+        if (opcRespuesta.equals(opcCorrecta)){
+
+            Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
+            startActivity(pantallaRetro);
+
+            System.out.println(opcRespuesta);
+            System.out.println("entro aqui");
+
+        }else{
+            Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
+            startActivity(pantallaRetro);
+            System.out.println(opcRespuesta);
+            System.out.println(opcCorrecta);
+            System.out.println("chale ta mal lk");
+        }
+
+
+
+
+    }
 
 
 }

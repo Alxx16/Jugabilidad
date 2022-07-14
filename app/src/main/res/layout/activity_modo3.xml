@@ -48,8 +48,8 @@
         <!-- Imagen de Mascota -->
     <ImageView
         android:id="@+id/jugabilidad2_imvMascota"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_below="@id/jugabilidad2_txtTitulo"
         android:layout_centerInParent="true"
         android:src="@drawable/luna_mascota" />
@@ -63,7 +63,7 @@
         android:layout_below="@id/jugabilidad2_txtTitulo"
         android:layout_centerInParent="true"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="45dp"
         android:layout_toRightOf="@id/jugabilidad2_imvMascota"
         android:background="@drawable/audio_blanco_icono" />
 
@@ -81,7 +81,7 @@
 
 
         <!-- Espacio para respuestas -->
-    <!--<FrameLayout
+    <FrameLayout
         android:id="@+id/jugabilidad2_fmlRespuestas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,23 +99,25 @@
 
         <View
             style="@style/split_line_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="@color/white"/>
 
         <View
             style="@style/split_line_horizontal"
             android:layout_marginTop="60dp"
             android:backgroundTint="@color/white" />
-    </FrameLayout>-->
+    </FrameLayout>
 
     <GridView
         android:id="@+id/jugabilidad2_grdRespuestas"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="140dp"
         android:layout_below="@+id/jugabilidad2_txtPregunta"
         android:layout_marginTop="5dp"
-        android:numColumns="4">
-    </GridView>
+        android:layout_marginBottom="5dp"
+
+        android:padding="10dp"
+        android:numColumns="3"></GridView>
 
 
         <!-- Grid de respuestas -->
@@ -125,16 +127,13 @@
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:layout_below="@id/jugabilidad2_grdRespuestas"
-        android:layout_marginTop="5dp"
-        android:numColumns="3"
+        android:layout_marginTop="20dp"
         android:horizontalSpacing="10dp"
+        android:numColumns="3"
         android:verticalSpacing="15dp">
 
     </GridView>
-        <!-- android:columnWidth="10dp"
-    android:background="@drawable/shape_jugabilidad2_gridview"-->
-
-        <!-- Boton para continuar -->
+ <!-- Boton para continuar -->
 
         <Button
             android:id="@+id/jugabilidad2_modo_3_btn_confirmar"
@@ -150,5 +149,6 @@
             android:text="CONFIRMAR"
             android:textColor="@color/black"
             android:textSize="15dp"
+            android:onClick="ComprobarResp"
             app:backgroundTint="@null" />
 </RelativeLayout>
