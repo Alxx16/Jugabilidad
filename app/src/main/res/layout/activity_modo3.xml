@@ -5,17 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     tools:context=".Modo3_Activity"
     android:background="@drawable/fondo" ><!--Link -->
-
-    <ImageButton
-        android:id="@+id/jugabilidad2_imbHome"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/atras_icono" /> <!--Link -->
-
-
 
     <!-- Bara de Progreso -->
     <ProgressBar
@@ -23,14 +14,15 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_below="@+id/jugabilidad2_imbHome"
         android:layout_marginTop="15dp"
         android:max="10"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:minWidth="50dp"
         android:minHeight="50dp"
         android:progressDrawable="@drawable/custom_progressbar" />
 
-        <!-- Titulo -->
+    <!-- Titulo -->
     <TextView
         android:id="@+id/jugabilidad2_txtTitulo"
         android:layout_width="match_parent"
@@ -38,6 +30,7 @@
         android:layout_below="@id/jugabilidad2_pgrBar"
         android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
+        android:padding="10dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Arma la Respuesta"
         android:textAlignment="center"
@@ -45,11 +38,11 @@
         android:textSize="27dp" />
 
 
-        <!-- Imagen de Mascota -->
+    <!-- Imagen de Mascota -->
     <ImageView
         android:id="@+id/jugabilidad2_imvMascota"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_below="@id/jugabilidad2_txtTitulo"
         android:layout_centerInParent="true"
         android:src="@drawable/luna_mascota" />
@@ -63,7 +56,7 @@
         android:layout_below="@id/jugabilidad2_txtTitulo"
         android:layout_centerInParent="true"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="64dp"
         android:layout_toRightOf="@id/jugabilidad2_imvMascota"
         android:background="@drawable/audio_blanco_icono" />
 
@@ -80,8 +73,8 @@
         android:textSize="20dp" />
 
 
-        <!-- Espacio para respuestas -->
-    <FrameLayout
+    <!-- Espacio para respuestas -->
+    <!--<FrameLayout
         android:id="@+id/jugabilidad2_fmlRespuestas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,56 +92,60 @@
 
         <View
             style="@style/split_line_horizontal"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/white"/>
 
         <View
             style="@style/split_line_horizontal"
             android:layout_marginTop="60dp"
             android:backgroundTint="@color/white" />
-    </FrameLayout>
+    </FrameLayout>-->
 
     <GridView
         android:id="@+id/jugabilidad2_grdRespuestas"
         android:layout_width="wrap_content"
-        android:layout_height="140dp"
+        android:layout_height="100dp"
         android:layout_below="@+id/jugabilidad2_txtPregunta"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-
         android:padding="10dp"
-        android:numColumns="3"></GridView>
+        android:numColumns="4">
+    </GridView>
 
 
-        <!-- Grid de respuestas -->
+    <!-- Grid de respuestas -->
 
     <GridView
         android:id="@+id/jugabilidad2_grdPalabras"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:layout_below="@id/jugabilidad2_grdRespuestas"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:horizontalSpacing="10dp"
         android:numColumns="3"
+        android:padding="10dp"
         android:verticalSpacing="15dp">
 
     </GridView>
- <!-- Boton para continuar -->
+    <!-- android:columnWidth="10dp"
+android:background="@drawable/shape_jugabilidad2_gridview"-->
 
-        <Button
-            android:id="@+id/jugabilidad2_modo_3_btn_confirmar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/shape_jugabilidad2_bntconfirmar"
-            android:fontFamily="@font/poppins_bold"
-            android:text="CONFIRMAR"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:onClick="ComprobarResp"
-            app:backgroundTint="@null" />
+    <!-- Boton para continuar -->
+
+    <Button
+        android:id="@+id/jugabilidad2_modo_3_btn_confirmar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+
+        android:background="@drawable/shape_jugabilidad2_bntconfirmar"
+        android:fontFamily="@font/poppins_bold"
+        android:text="CONFIRMAR"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        app:backgroundTint="@null"
+        android:onClick="ComprobarResp"/>
 </RelativeLayout>
