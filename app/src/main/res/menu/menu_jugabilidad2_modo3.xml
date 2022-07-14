@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mitemHome"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/home_icono"
+        android:title="home" />
+
+    <item
+        android:id="@+id/mitemUsuario"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/perfil_icono"
+        android:title="usuario" />
+
+    <item
+        android:id="@+id/mitemCerrar"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/cerrarsesion__icono"
+        android:title="cerrar sesion" />
+</menu>

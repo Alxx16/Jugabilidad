@@ -10,6 +10,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,9 @@ public class Modo3_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo3);
+
+        Toolbar jugabilidad2_toolBar = findViewById(R.id.jugabilidad2_toolBar);
+        setSupportActionBar(jugabilidad2_toolBar);
 
         inicializarControles();
         inicializarVistaPerzonalida();
@@ -265,5 +269,10 @@ public class Modo3_Activity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_jugabilidad2_modo3, menu);
+        return true;
+    }
 
 }

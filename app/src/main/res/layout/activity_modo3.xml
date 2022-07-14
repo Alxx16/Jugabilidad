@@ -9,6 +9,14 @@
     tools:context=".Modo3_Activity"
     android:background="@drawable/fondo" ><!--Link -->
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/jugabilidad2_toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#071729"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:navigationIcon="?attr/homeAsUpIndicator" />
+
     <!-- Bara de Progreso -->
     <ProgressBar
         android:id="@+id/jugabilidad2_pgrBar"
@@ -19,6 +27,7 @@
         android:max="10"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
+        android:layout_below="@+id/jugabilidad2_toolBar"
         android:minWidth="50dp"
         android:minHeight="50dp"
         android:progressDrawable="@drawable/custom_progressbar" />
