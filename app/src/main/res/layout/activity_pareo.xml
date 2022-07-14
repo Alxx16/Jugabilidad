@@ -8,24 +8,63 @@
     android:orientation="vertical"
     android:background="@drawable/ic_fondo">
 
+        <ImageView
+            android:id="@+id/imgPareo1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:nextFocusLeft="@id/pgrPareo"
+            android:src="@drawable/atras_icono" />
+
+        <TextView
+            android:id="@+id/lblFrograning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/imgPareo1"
+            android:text="Frograming"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
     <ImageView
-        android:id="@+id/imgPareo1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
+        android:id="@+id/icono_home"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginTop="20dp"
-        android:nextFocusLeft="@id/pgrPareo"
-        android:src="@drawable/ic_home_icono" />
+        android:layout_marginLeft="27dp"
+        android:layout_toRightOf="@+id/lblFrograning"
+        android:src="@drawable/ic_home_icono"/>
+
+    <ImageView
+        android:id="@+id/icono_perfil"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/icono_home"
+        android:src="@drawable/perfil_icono"/>
+
+    <ImageView
+        android:id="@+id/icono_cerrar_secion"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/icono_perfil"
+        android:src="@drawable/cerrar_sesion_icono"/>
 
     <ProgressBar
         android:id="@+id/pgrPareo"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/imgPareo1"
+        android:layout_below="@+id/lblFrograning"
         android:indeterminateDrawable="@drawable/progress_bar_jugabilidades"
         android:max="11"
         android:min="1"
@@ -38,14 +77,14 @@
         android:id="@+id/lblTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imgPareo1"
+        android:layout_below="@id/pgrPareo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="13dp"
         android:fontFamily="@font/poppins"
         android:textAlignment="center"
         android:text="Eligé la combinación correcta"
         android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:textSize="22dp" />
 
     <ListView
         android:id="@+id/lstPareo1"
@@ -84,9 +123,9 @@
         android:layout_marginBottom="20dp"
         android:enabled="false"
         android:fontFamily="@font/poppins"
-        android:text="Confirmar"
+        android:text="Siguiente"
         app:backgroundTint = "@null"
-        android:background="@drawable/shape_jugabilidad2_bntconfirmar"
+        android:background="@drawable/shape_jugabilidad2_boton_corfirmar"
         android:textColor="@color/black"
         android:onClick="siguienteP"
         />
