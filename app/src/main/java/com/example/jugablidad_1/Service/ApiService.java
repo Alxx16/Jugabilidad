@@ -16,7 +16,7 @@ public class ApiService {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
 
-        String baseUrl = "http://192.168.0.2:8080/";
+        String baseUrl = "http://172.31.192.1:8080/";
 
         if (API_SERVICE == null){
             Retrofit retrofit = new Retrofit.Builder()

@@ -2,17 +2,23 @@ package com.example.jugablidad_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,58 +37,77 @@ import com.nex3z.flowlayout.FlowLayout;
 
 public class Modo3_Activity extends AppCompatActivity {
 
-    ProgressBar jugabilidad2_pgrBa;
+    RelativeLayout jugabilidad2_modo_3_mainLayout;
     TextView jugabilidad2_txtPregunta;
-    GridView jugabilidad2_grdRespuestas;
-    GridView jugabilidad2_grdPalabras;
-
+    Button jugabilidad2_modo_3_boton;
+    ImageButton jugabilidad2_imbVoz;
     FlowLayout sentenceLine;
 
-    List<String> respuestas;
-    ImageButton jugabilidad2_imbVoz;
+
+    private Modo3_PalabraPersonalizada palabraPersonalizada;
+    private Modo3_VistaPersonalizada vistaPersonalizada;
+
     String audioP;
+
+    List<String> respuestas;
+    String pregunta = "";
     String opcCorrecta;
     String opcIncorrecta = "";
-    int currentProgress = 0;
+    String totalRespuestas;
 
     List<String> opcRespuesta = new ArrayList<>();
 
     SharedPreferencesController spp = new SharedPreferencesController();
 
-    /*currentProgress = currentProgress + 10;
-                    jugabilidad2_pgrBa.setProgress(currentProgress);
-                    jugabilidad2_pgrBa.setMax(100);*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo3);
 
-        this.InicializarControles();
-
+        inicializarControles();
+        inicializarVistaPerzonalida();
+        obtenerInfoPregunta();
+        revisarRespuesta();
     }
 
-    private void InicializarControles() {
-        jugabilidad2_pgrBa = (ProgressBar) findViewById(R.id.jugabilidad2_pgrBar);
+    private void inicializarControles() {
+        jugabilidad2_modo_3_mainLayout = (RelativeLayout)findViewById(R.id.jugabilidad2_modo_3_main_layout);
+        jugabilidad2_modo_3_boton = (Button)findViewById(R.id.jugabilidad2_modo_3_btn_confirmar);
         jugabilidad2_txtPregunta = (TextView) findViewById(R.id.jugabilidad2_txtPregunta);
-        /*sentenceLine = (FlowLayout)findViewById(R.id.jugabilidad2_sentence_line);*/
-        jugabilidad2_grdRespuestas = (GridView) findViewById(R.id.jugabilidad2_grdRespuestas);
-        jugabilidad2_grdPalabras = (GridView) findViewById(R.id.jugabilidad2_grdPalabras);
+        sentenceLine = (FlowLayout)findViewById(R.id.jugabilidad2_sentence_line);
         jugabilidad2_imbVoz = (ImageButton) findViewById(R.id.jugabilidad2_imbVoz);
-        this.obtenerInfoPregunta();
-        this.SetearGrid();
         this.AudioPregunta();
     }
 
-    private void obtenerInfoPregunta() {
+    private class TouchListener implements View.OnTouchListener {
 
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN && !vistaPersonalizada.empty()) {
+                //Si la Vista de la palabra es presionada. Se va al metodo goToViewGroup
+                //Que dependiendo si la palabra
+                // este en el grupo de palabra abajo (se ira hacia arriba a la linea de oracion) y
+                // este en la linea de oracion (se ira hacia abajo al grupo de palabras)
+                palabraPersonalizada = (Modo3_PalabraPersonalizada) view;
+                palabraPersonalizada.goToViewGroup(vistaPersonalizada, sentenceLine);
+
+                //Metodo para validar si el boton puede ser activado o no segun Si la linea de oracion tenga elemento o no.
+                activacionBoton();
+
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+    private void obtenerInfoPregunta() {
 
         Jugabilidad jugabildad = new Jugabilidad(this);
         String ids = spp.leer(this, "preguntas_id");
         String[] aux = ids.split(",");
         int id = Integer.parseInt(aux[aux.length - 1]);
-        String pregunta = "";
-       /* String opcCorrecta = "";*/
-        String opcIncorrecta= "";
         //ARRAYLIST CON LOS DATOS DE LA PREGUNTA
         List<PreguntasResponse> preguntas = jugabildad.getPregunta(id);
 
@@ -98,18 +123,80 @@ public class Modo3_Activity extends AppCompatActivity {
             opcIncorrecta = preguntas.get(0).getOpcion_resp();
         }
 
-        String totalRespuestas = opcCorrecta + " " + opcIncorrecta;
+        totalRespuestas = opcCorrecta + " " + opcIncorrecta;
 
         respuestas = Arrays.asList(totalRespuestas.split(" "));
 
         Collections.shuffle(respuestas);
 
         jugabilidad2_txtPregunta.setText(pregunta);
+
+        /////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////
+        //Desabilitamos el boton de CONFIRMAR y le agregamos que este en blanco.
+        jugabilidad2_modo_3_boton.setEnabled(false);
+        jugabilidad2_modo_3_boton.setTextColor(getResources().getColor(R.color.white_text));
+
+        seteandoTexto(respuestas);
+
     }
 
-    public void SetearGrid() {
-        GridViewAdapter adapter = new GridViewAdapter(this, respuestas, jugabilidad2_grdRespuestas);
-        jugabilidad2_grdPalabras.setAdapter(adapter);
+    public void inicializarVistaPerzonalida(){
+        //Instancio a mi clase VistaPersonalizada
+        //A esta Vista la voy agregar en mi actividad
+        vistaPersonalizada = new Modo3_VistaPersonalizada(getApplicationContext());
+
+        //Seteo la vista en el centro de la actividad
+        vistaPersonalizada.setGravity(Gravity.CENTER);
+
+        //Le agrego parametros a la VistaPersonalizada
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        //Parametro para que la vista quede creada por debajo de la oracion
+        params.addRule(RelativeLayout.BELOW, R.id.jugabilidad2_fmlRespuestas);
+        params.topMargin = 235;
+
+        //Finalmente agrego esa vista al activity_modo3.xml
+        jugabilidad2_modo_3_mainLayout.addView(vistaPersonalizada, params);
+
+    }
+
+    private void activacionBoton(){
+        //Hacemos validaciones para ver si el boton puede ser activado o no
+
+        //Si la linea de oracion esta mayor a 0, osea que tiene elementos (por ejemplo una vista de palabra)
+        if (sentenceLine.getChildCount() > 0) {
+            //Entonces al boton se volverá verde y se podrá Tocar
+            jugabilidad2_modo_3_boton.getBackground().setColorFilter(
+                    ContextCompat.getColor(this, R.color.green_button),
+                    PorterDuff.Mode.MULTIPLY);
+
+            jugabilidad2_modo_3_boton.setEnabled(true);
+
+        } else {
+            //De lo contrario, el boton seguirá viendosé gris y no se podrá tocar.
+            jugabilidad2_modo_3_boton.getBackground().setColorFilter(
+                    ContextCompat.getColor(this, R.color.grey_button),
+                    PorterDuff.Mode.MULTIPLY);
+
+            jugabilidad2_modo_3_boton.setEnabled(false);
+            }
+    }
+
+    private void seteandoTexto(List<String> respuestas) {
+        //Recorreremos cada palabra de la lista.
+
+        for(String unaPalabra : respuestas){
+            //A cada palabra la va enviar a PalabraPersonalizada
+            Modo3_PalabraPersonalizada palabraPersonalizada = new Modo3_PalabraPersonalizada(getApplicationContext(),unaPalabra);
+            //Se le implementa a esa vista de Palabra un metodo de Toque de Accion
+            palabraPersonalizada.setOnTouchListener(new TouchListener());
+
+            //A la palabra le enviamos al metodo enviarPalabraVistaPersonalizada para meter ese vista de palabra a la Vista Personalizada
+            vistaPersonalizada.enviarPalabraVistaPersonalizada(palabraPersonalizada);
+        }
+
     }
 
     public void AudioPregunta() {
@@ -123,41 +210,60 @@ public class Modo3_Activity extends AppCompatActivity {
         });
     }
 
-    public void ComprobarResp (View view){
 
-        /*String str="";*/
-        GridViewAdapter adapter = new GridViewAdapter(this, respuestas, jugabilidad2_grdRespuestas);
-        opcRespuesta = adapter.respuestas_probar();
+    private void revisarRespuesta() {
+        //Agregar metodo onClick cuando el boton sea presionado
+        jugabilidad2_modo_3_boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Variable StringBuilder para que vaya almacenando cada respuesta introducida en la Linea de Oracion
+                StringBuilder respuestaIntroducida = new StringBuilder();
 
-        /*for (String resp : opcRespuesta) {
-            str+=resp+" ";
-        }*/
-       /* StringBuilder str = new StringBuilder();
-        for (String resp : opcRespuesta) {
-            str.append(resp);
-            str.append(" ");
-        }*/
+                //Recorrer la linea de oracion para traer cada elemento (osea la vista de palabras) que haya en la linea de oracion
+                for (int i = 0; i < sentenceLine.getChildCount(); i++) {
 
-        if (opcRespuesta.equals(opcCorrecta)){
+                    //palabraPersonalizada tomará el TextView de que esta en la posicion (i) que tenga la linea de oracion
+                    palabraPersonalizada = (Modo3_PalabraPersonalizada) sentenceLine.getChildAt(i);
 
-            Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
-            startActivity(pantallaRetro);
+                    //respuestaIntroducida irá almacenando cada texto de palabra que trae de palabraPersonalizada
+                    //Ejemplo:  palabra1+" "+"palabra2"+" "+"palabra3"+" "
+                    respuestaIntroducida.append(palabraPersonalizada.getText().toString() + " ");
+                }
 
-            System.out.println(opcRespuesta);
-            System.out.println("entro aqui");
+                //Si respuestaIntroducida contiene lo mismo que opcCorrecta ((palabra1 palabra2 palabra3)  == opcCorrera+" ")
+                if(respuestaIntroducida.toString().equals(opcCorrecta + " ")){
+                    //Mensaje Toast de Correcto
+                    Toast.makeText(getApplicationContext(),"correcto CORRECTO PAI MUY BIEN",Toast.LENGTH_LONG).show();
 
-        }else{
-            Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
-            startActivity(pantallaRetro);
-            System.out.println(opcRespuesta);
-            System.out.println(opcCorrecta);
-            System.out.println("chale ta mal lk");
+
+                    ////Lo enviamos a la pantalla de Retroalimentacion
+                    Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
+                    startActivity(pantallaRetro);
+
+                    //Prueba de impresion (ELIMINAR DESPUES)
+                    System.out.println(opcRespuesta);
+                    System.out.println("entro aqui");
+
+                }else{
+                    //Mensaje Toast de Incorrecto
+                    Toast.makeText(getApplicationContext(),"incorrecto INCORRECTO MALO MALO MALO",Toast.LENGTH_LONG).show();
+
+                    //Lo enviamos a la pantalla de Retroalimentacion
+                    Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
+                    startActivity(pantallaRetro);
+
+                    //Prueba de impresion (ELIMINAR DESPUES)
+                    System.out.println(opcRespuesta);
+                    System.out.println(opcCorrecta);
+                    System.out.println("chale ta mal lk");
+                }
+            }
+        });
+        {
+
         }
-
-
-
-
     }
+
 
 
 }

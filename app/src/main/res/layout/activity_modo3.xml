@@ -3,6 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/jugabilidad2_modo_3_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Modo3_Activity"
@@ -74,7 +75,7 @@
 
 
     <!-- Espacio para respuestas -->
-    <!--<FrameLayout
+    <FrameLayout
         android:id="@+id/jugabilidad2_fmlRespuestas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,35 +100,8 @@
             style="@style/split_line_horizontal"
             android:layout_marginTop="60dp"
             android:backgroundTint="@color/white" />
-    </FrameLayout>-->
+    </FrameLayout>
 
-    <GridView
-        android:id="@+id/jugabilidad2_grdRespuestas"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_below="@+id/jugabilidad2_txtPregunta"
-        android:layout_marginTop="5dp"
-        android:padding="10dp"
-        android:numColumns="4">
-    </GridView>
-
-
-    <!-- Grid de respuestas -->
-
-    <GridView
-        android:id="@+id/jugabilidad2_grdPalabras"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_below="@id/jugabilidad2_grdRespuestas"
-        android:layout_marginTop="5dp"
-        android:horizontalSpacing="10dp"
-        android:numColumns="3"
-        android:padding="10dp"
-        android:verticalSpacing="15dp">
-
-    </GridView>
-    <!-- android:columnWidth="10dp"
-android:background="@drawable/shape_jugabilidad2_gridview"-->
 
     <!-- Boton para continuar -->
 
@@ -146,6 +120,5 @@ android:background="@drawable/shape_jugabilidad2_gridview"-->
         android:text="CONFIRMAR"
         android:textColor="@color/black"
         android:textSize="15dp"
-        app:backgroundTint="@null"
-        android:onClick="ComprobarResp"/>
+        app:backgroundTint="@null"/>
 </RelativeLayout>

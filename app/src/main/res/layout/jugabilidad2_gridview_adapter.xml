@@ -15,7 +15,7 @@
         android:textSize="13dp"
         android:fontFamily="@font/victorpro"
         android:textAlignment="center"
-        android:background="@drawable/shape_jugabilidad2_gridview"/>
+        android:background="@drawable/shape_jugabilidad2_palabra"/>
 
 
 </LinearLayout>
