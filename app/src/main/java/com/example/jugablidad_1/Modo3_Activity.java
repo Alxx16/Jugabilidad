@@ -57,6 +57,8 @@ public class Modo3_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_modo3);
         this.InicializarControles();
 
+
+
     }
 
     private void InicializarControles() {
@@ -72,8 +74,6 @@ public class Modo3_Activity extends AppCompatActivity {
     }
 
     private void obtenerInfoPregunta() {
-
-
         Jugabilidad jugabildad = new Jugabilidad(this);
         String ids = spp.leer(this, "preguntas_id");
         String[] aux = ids.split(",");
@@ -124,29 +124,33 @@ public class Modo3_Activity extends AppCompatActivity {
     public void ComprobarResp (View view){
 
         /*String str="";*/
-        GridViewAdapter adapter = new GridViewAdapter(this, respuestas, jugabilidad2_grdRespuestas);
-        opcRespuesta = adapter.respuestas_probar();
+        GridViewAdapterRespuesta adapter = new GridViewAdapterRespuesta(this);
+        opcRespuesta = adapter.respuesta_seleccionada();
+
+        /*opcRespuesta.add(adapter.respuesta_seleccionada().toString());*/
 
         /*for (String resp : opcRespuesta) {
             str+=resp+" ";
         }*/
-       /* StringBuilder str = new StringBuilder();
+       StringBuilder str = new StringBuilder();
         for (String resp : opcRespuesta) {
             str.append(resp);
             str.append(" ");
-        }*/
+        }
 
-        if (opcRespuesta.equals(opcCorrecta)){
+        if (str.equals(opcCorrecta)){
 
             Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
             startActivity(pantallaRetro);
 
+            System.out.println(str);
             System.out.println(opcRespuesta);
             System.out.println("entro aqui");
 
         }else{
             Intent pantallaRetro = new Intent(getApplicationContext(), RetroalimentacionActivity.class);
             startActivity(pantallaRetro);
+            System.out.println(str);
             System.out.println(opcRespuesta);
             System.out.println(opcCorrecta);
             System.out.println("chale ta mal lk");

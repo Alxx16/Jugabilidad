@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.example.jugablidad_1.Modo3_Activity;
 import com.example.jugablidad_1.R;
 
 import java.util.ArrayList;
@@ -29,6 +30,9 @@ public class GridViewAdapter extends BaseAdapter {
         this.jugabilidad2_grdRespuesta_adapter = respuestas_elegidas;
 
     }
+
+
+
     @Override
     public int getCount() {
         return respuesta.size();

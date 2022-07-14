@@ -20,13 +20,21 @@ public class GridViewAdapterRespuesta  extends ArrayAdapter {
     Context context;
     List<String> respuesta;
     List<String> opcRespuestas = new ArrayList<>();
-
+    String [] temporal;
 
 
     public GridViewAdapterRespuesta(Context context, List<String> respuestas) {
         super(context, R.layout.jugabilidad2_gridview_adapter, respuestas);
         this.context = context;
         this.respuesta = respuestas;
+
+
+
+    }
+
+    public GridViewAdapterRespuesta(Context context){
+        super(context, R.layout.jugabilidad2_gridview_adapter);
+
 
     }
 
@@ -55,21 +63,22 @@ public class GridViewAdapterRespuesta  extends ArrayAdapter {
         }
         TextView textos = (TextView) convertView.findViewById(R.id.jugabilidad2_contResp);
         textos.setText(respuesta.get(position));
-
+        opcRespuestas = respuesta;
         textos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                respuesta.remove(position);
-
-
+                /*respuesta.remove(position);*/
 
                /* view.setVisibility(View.GONE);
-                respuesta.add(textos.getText().toString());
+                 */
+
+                /*respuesta.add(textos.getText().toString());
                 GridViewAdapter adapter = new GridViewAdapter(context, respuesta, jugabilidad2_grdPalabras_adapter);
                 jugabilidad2_grdPalabras_adapter.setAdapter(adapter);*/
              /* swapItems(respuesta);*/
             }
+
         });
 
 
