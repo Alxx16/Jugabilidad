@@ -41,14 +41,16 @@
         android:layout_below="@id/imgPareo1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins"
+        android:textAlignment="center"
         android:text="Eligé la combinación correcta"
         android:textColor="@color/white"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <ListView
         android:id="@+id/lstPareo1"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="475dp"
         android:layout_below="@id/lblTitulo"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
@@ -56,32 +58,36 @@
         android:backgroundTint="@color/white"
         android:cacheColorHint="#00000000"
         android:divider="#00000000"
-        android:dividerHeight="20dp" />
+        android:dividerHeight="45dp"
+        android:fontFamily="@font/poppins" />
 
     <ListView
         android:id="@+id/lstPareo2"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:divider="#00000000"
-        android:dividerHeight="20dp"
-        android:layout_alignParentRight="true"
-        android:backgroundTint="@color/white"
+        android:layout_width="180dp"
+        android:layout_height="475dp"
         android:layout_below="@id/lblTitulo"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:cacheColorHint="#00000000"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:background="#00000000"
+        android:backgroundTint="@color/white"
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="15dp"
+        android:fontFamily="@font/poppins" />
 
     <Button
         android:id="@+id/btnPareoSiguiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:enabled="false"
-        android:text="SIGUIENTE"
-        android:textColor="@color/white"
+        android:fontFamily="@font/poppins"
+        android:text="Confirmar"
+        app:backgroundTint = "@null"
+        android:background="@drawable/shape_jugabilidad2_bntconfirmar"
+        android:textColor="@color/black"
         android:onClick="siguienteP"
         />
 

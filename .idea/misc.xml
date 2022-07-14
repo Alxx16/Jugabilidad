@@ -28,10 +28,18 @@
         <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/layout/pareo_view.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/Desktop/DSVI P/Proyecto-Jugabilidad-2/app/src/main/res/layout/pareolistview_template.xml" value="0.3265625" />
         <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugabilidad2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/giljo/Escritorio/Semestral desa 6/Jugabilidad/app/src/main/res/drawable-v24/shape_jugabilidad2_bntconfirmar.xml" value="0.1635" />
+        <entry key="..\:/Users/giljo/Escritorio/Semestral desa 6/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_correcto.xml" value="0.124" />
+        <entry key="..\:/Users/giljo/Escritorio/Semestral desa 6/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_general.xml" value="0.151" />
+        <entry key="..\:/Users/giljo/Escritorio/Semestral desa 6/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_incorrecto.xml" value="0.151" />
+        <entry key="..\:/Users/giljo/Escritorio/Semestral desa 6/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_seleccionaropcion.xml" value="0.151" />
+        <entry key="..\:/Users/giljo/Escritorio/Semestral desa 6/Jugabilidad/app/src/main/res/drawable/shapes_jugabilidad_2.xml" value="0.151" />
+        <entry key="..\:/Users/giljo/Escritorio/Semestral desa 6/Jugabilidad/app/src/main/res/layout/activity_pareo.xml" value="0.25" />
+        <entry key="..\:/Users/giljo/Escritorio/Semestral desa 6/Jugabilidad/app/src/main/res/layout/pareolistview_template.xml" value="0.11865942028985507" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

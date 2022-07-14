@@ -53,7 +53,7 @@ public class PareoActivity extends AppCompatActivity {
     }
 
     //#CLASE DONDE SE CREABA LA BASE DE DATOS PAREO TU TE ENCARGASTE DE ESTO
-    /*
+
     private void CargarDbTablaPareo(){
         //LLAMADA DE END POINT PARA OBTENER DATOS
         //DECLARACIÓN DE LIST IGUAL AL DE RESPONSE PARA GUARDADO DE DATOS
@@ -82,7 +82,7 @@ public class PareoActivity extends AppCompatActivity {
                 int x=1;
             }
         });
-    }*/
+    }
 
     private void InicializarControles() {
         lstPareo = (ListView)findViewById(R.id.lstPareo1);
