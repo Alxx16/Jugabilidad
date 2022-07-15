@@ -55,7 +55,7 @@
         android:layout_height="150dp"
         android:layout_below="@id/jugabilidad2_txtTitulo"
         android:layout_centerInParent="true"
-        android:src="@drawable/luna_neutral" />
+        android:src="@drawable/luna_neutral"/>
     <!-- Boton para Sonido -->
 
     <!-- Preguntas -->
