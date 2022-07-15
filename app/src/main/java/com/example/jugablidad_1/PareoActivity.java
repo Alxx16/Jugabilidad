@@ -72,7 +72,6 @@ public class PareoActivity extends AppCompatActivity {
         String ids = spp.leer(this,"preguntas_id");
         String [] aux = ids.split(",");
         idPreguntaPareo = Integer.parseInt(aux[aux.length-1]);
-        System.out.println(idPreguntaPareo);
         CargarListView();
         CargarListView2();
         AttachEvent();
@@ -140,20 +139,18 @@ public class PareoActivity extends AppCompatActivity {
                     try {
                         mediaPlayer.stop();
                         //#parsear la variable audio a uri para poder buscarlá en la la carpeta del api
-                        mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/"+audio))));
+                        mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/prueba.mp3"))));
                         mediaPlayer.prepare();
                         mediaPlayer.start();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //mediaPlayer.start();
                     //#Se le asignara el valor del del textview a variable textview para tomar el valor
                     TextView txt = (TextView) view.findViewById(R.id.lblPareoTemplate);
                     //#Parsear el textview de la variable txt a un string para poder usarlo
                     opcPareo1 = txt.getText().toString();
                     //#Método obtenerIdPareo es utilizado para obtener el id del elemento seleccionado del listview
                     idPareo1= pareo.obtenerIdPareo(opcPareo1,getApplicationContext());
-                    System.out.println(idPareo1);
                     //#Método compararPreguntas es utilizado para comparar los dos elementos seleccionados de cada listview
                     compararPreguntas(idPareo1,idPareo2);
                 }
@@ -175,7 +172,7 @@ public class PareoActivity extends AppCompatActivity {
                     MediaPlayer mediaPlayer =new MediaPlayer();
                     try {
                         mediaPlayer.stop();
-                        mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/"+audio))));
+                        mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/prueba.mp3"))));
                         mediaPlayer.prepare();
                         mediaPlayer.start();
                     } catch (FileNotFoundException e){
@@ -183,11 +180,9 @@ public class PareoActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    //mediaPlayer.start();
                     TextView txt = (TextView) view.findViewById(R.id.lblPareoTemplate);
                     opcPareo2 = txt.getText().toString();
                     idPareo2= pareo.obtenerIdPareo(opcPareo2,getApplicationContext());
-                    System.out.println(idPareo2);
                     compararPreguntas(idPareo1,idPareo2);
                 }
             }
@@ -216,12 +211,17 @@ public class PareoActivity extends AppCompatActivity {
                 TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
-                        //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna que sean invisibles a la vista
-                        lblPareo1.setEnabled(false);
-                        lblPareo2.setEnabled(false);
-                        //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna null para que no haya problemas de vista
-                        lblPareo1= null;
-                        lblPareo2= null;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna que sean invisibles a la vista
+                                lblPareo1.setEnabled(false);
+                                lblPareo2.setEnabled(false);
+                                //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna null para que no haya problemas de vista
+                                lblPareo1= null;
+                                lblPareo2= null;
+                            }
+                        });
                     }
                 };
                 Timer time = new Timer();
@@ -238,12 +238,17 @@ public class PareoActivity extends AppCompatActivity {
                 TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
-                        //#Al momento de fallar la condicional se le asignara un shape blanco que mostrará en pantalla como una señal de no tener nada seleccionado
-                        lblPareo1.setBackgroundResource(R.drawable.shape_jugabilidad2_palabra);
-                        lblPareo2.setBackgroundResource(R.drawable.shape_jugabilidad2_palabra);
-                        //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna null para que no haya problemas de vista
-                        lblPareo1= null;
-                        lblPareo2= null;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //#Al momento de fallar la condicional se le asignara un shape blanco que mostrará en pantalla como una señal de no tener nada seleccionado
+                                lblPareo1.setBackgroundResource(R.drawable.shape_jugabilidad2_palabra);
+                                lblPareo2.setBackgroundResource(R.drawable.shape_jugabilidad2_palabra);
+                                //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna null para que no haya problemas de vista
+                                lblPareo1= null;
+                                lblPareo2= null;
+                            }
+                        });
                     }
                 };
                 Timer time = new Timer();

@@ -10,7 +10,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Jugablidad_1">
+        android:theme="@style/Theme.Jugablidad_1"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false">
         <activity
             android:name=".RetroalimentacionActivity"
             android:exported="false" />
