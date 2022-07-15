@@ -3,9 +3,10 @@ package com.example.jugablidad_1;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,17 +15,12 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jugablidad_1.Adaptadores.GridViewAdapter;
-import com.example.jugablidad_1.Adaptadores.GridViewAdapterRespuesta;
 import com.example.jugablidad_1.Controller.Jugabilidad;
 import com.example.jugablidad_1.Controller.SharedPreferencesController;
 
@@ -70,6 +66,7 @@ public class Modo3_Activity extends AppCompatActivity {
 
         inicializarControles();
         inicializarVistaPerzonalida();
+        activacionBoton();
         obtenerInfoPregunta();
         revisarRespuesta();
     }
@@ -139,7 +136,9 @@ public class Modo3_Activity extends AppCompatActivity {
         /////////////////////////////////////////////////////////////////
         //Desabilitamos el boton de CONFIRMAR y le agregamos que este en blanco.
         jugabilidad2_modo_3_boton.setEnabled(false);
-        jugabilidad2_modo_3_boton.setTextColor(getResources().getColor(R.color.white_text));
+        jugabilidad2_modo_3_boton.setBackground(
+                ContextCompat.getDrawable(getApplicationContext(),
+                        R.drawable.shape_jugabilidad2_btn0));
 
         seteandoTexto(respuestas);
 
@@ -159,7 +158,8 @@ public class Modo3_Activity extends AppCompatActivity {
 
         //Parametro para que la vista quede creada por debajo de la oracion
         params.addRule(RelativeLayout.BELOW, R.id.jugabilidad2_fmlRespuestas);
-        params.topMargin = 235;
+        params.addRule(RelativeLayout.ABOVE, R.id.jugabilidad2_modo_3_btn_confirmar);
+        params.topMargin = 5;
 
         //Finalmente agrego esa vista al activity_modo3.xml
         jugabilidad2_modo_3_mainLayout.addView(vistaPersonalizada, params);
@@ -171,18 +171,18 @@ public class Modo3_Activity extends AppCompatActivity {
 
         //Si la linea de oracion esta mayor a 0, osea que tiene elementos (por ejemplo una vista de palabra)
         if (sentenceLine.getChildCount() > 0) {
-            //Entonces al boton se volverá verde y se podrá Tocar
-            jugabilidad2_modo_3_boton.getBackground().setColorFilter(
-                    ContextCompat.getColor(this, R.color.green_button),
-                    PorterDuff.Mode.MULTIPLY);
+            //Entonces al boton se volverá de color y se podrá Tocar
+            jugabilidad2_modo_3_boton.setBackground(
+                    ContextCompat.getDrawable(getApplicationContext(),
+                            R.drawable.shape_jugabilidad2_bntconfirmar));
 
             jugabilidad2_modo_3_boton.setEnabled(true);
 
         } else {
             //De lo contrario, el boton seguirá viendosé gris y no se podrá tocar.
-            jugabilidad2_modo_3_boton.getBackground().setColorFilter(
-                    ContextCompat.getColor(this, R.color.grey_button),
-                    PorterDuff.Mode.MULTIPLY);
+            jugabilidad2_modo_3_boton.setBackground(
+                    ContextCompat.getDrawable(getApplicationContext(),
+                            R.drawable.shape_jugabilidad2_btn0));
 
             jugabilidad2_modo_3_boton.setEnabled(false);
             }
@@ -197,6 +197,10 @@ public class Modo3_Activity extends AppCompatActivity {
             //Se le implementa a esa vista de Palabra un metodo de Toque de Accion
             palabraPersonalizada.setOnTouchListener(new TouchListener());
 
+            //Seteando al textView la fuente
+            Typeface typeface = ResourcesCompat.getFont(getApplicationContext(), R.font.victorpro);
+            palabraPersonalizada.setTypeface(typeface);
+
             //A la palabra le enviamos al metodo enviarPalabraVistaPersonalizada para meter ese vista de palabra a la Vista Personalizada
             vistaPersonalizada.enviarPalabraVistaPersonalizada(palabraPersonalizada);
         }
@@ -207,7 +211,7 @@ public class Modo3_Activity extends AppCompatActivity {
         jugabilidad2_imbVoz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), Uri.parse("http://192.168.0.17:8080/madres.mp3"));
+                MediaPlayer mp = MediaPlayer.create(getApplicationContext(),R.raw.madres);
                 mp.start();
 
             }

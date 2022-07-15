@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_bntconfirmar.xml" value="0.162" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_btn0.xml" value="0.162" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_cuadro_de_palabra.xml" value="0.168" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_gridview.xml" value="0.178" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/drawable/shape_jugabilidad2_palabra.xml" value="0.1735" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/layout/activity_jnj_main.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/layout/activity_modo3.xml" value="0.26871794871794874" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/layout/activity_retroalimentacion.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/layout/jugabilidad2_gridview_adapter.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/Jugabilidad/app/src/main/res/menu/menu_jugabilidad2_modo3.xml" value="0.271875" />
         <entry key="..\:/Users/eidig/AndroidStudioProjects/Jugablidad_1/app/src/main/res/drawable/shape_jugabilidad2_bntconfirmar.xml" value="0.159" />

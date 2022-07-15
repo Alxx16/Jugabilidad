@@ -23,13 +23,13 @@ public class Modo3_PalabraPersonalizada extends AppCompatTextView {
         setText(palabra);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        layoutParams.setMargins(15, 15,15, 0);
+        layoutParams.setMargins(15, 5,15, 0);
 
         setTextColor(getResources().getColor(R.color.black));
         setPadding(5,5,5,5);
         setLayoutParams(layoutParams);
         setTextAlignment(TEXT_ALIGNMENT_CENTER);
-        setTextSize(20);
+        setTextSize(15);
 
         setBackground(ContextCompat.getDrawable(getContext(), R.drawable.shape_jugabilidad2_palabra));
     }

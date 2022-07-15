@@ -28,10 +28,10 @@ public class Modo3_VistaPersonalizada extends FlowLayout {
     public void removerDeLaVista(View view){
         palabraPersonalizada = new Modo3_PalabraPersonalizada(getContext(), "");
 
-        palabraPersonalizada.setBackgroundColor(getResources().getColor(R.color.white));
+        palabraPersonalizada.setBackgroundColor(getResources().getColor(R.color.trans));
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(view.getWidth(), view.getHeight());
-        params.setMargins(15, 15,15, 0);
+        params.setMargins(15, 5,15, 0);
         palabraPersonalizada.setLayoutParams(params);
 
         removeView(view);
