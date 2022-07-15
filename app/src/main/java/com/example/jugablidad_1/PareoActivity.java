@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -66,7 +67,7 @@ public class PareoActivity extends AppCompatActivity {
         btn_siguiente = (Button) findViewById(R.id.jugabilidad2_modo_4_btn_confirmar);
         lstPareo = (ListView)findViewById(R.id.lstPareo1);
         lstPareo2 = (ListView)findViewById(R.id.lstPareo2);
-        prgbar = (ProgressBar) findViewById(R.id.pgrPareo);
+        prgbar = (ProgressBar) findViewById(R.id.jugabilidad2_pgrBar);
         //Jugabildad jugabildad = new Jugabildad(this);
         String ids = spp.leer(this,"preguntas_id");
         String [] aux = ids.split(",");
@@ -75,6 +76,12 @@ public class PareoActivity extends AppCompatActivity {
         CargarListView();
         CargarListView2();
         AttachEvent();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_jugabilidad2_modo3, menu);
+        return true;
     }
 
     private void CargarListView() {
@@ -116,7 +123,7 @@ public class PareoActivity extends AppCompatActivity {
                 //#Condicional que va a ser usada en el momento en se haya seleccionado por segunda vez un elemento en la misma columna
                 //#Para cambiar el color del actual elemento seleccionado y quitar el color al anteriormente seleccionado
                 if(lblPareo1!=null){
-                    lblPareo1.setBackgroundResource(R.drawable.shape_jugabilidad2_general);
+                    lblPareo1.setBackgroundResource(R.drawable.shape_jugabilidad2_palabra);
                 }
                 TextView estate =view.findViewById(R.id.lblPareoTemplate);
                 if(estate.isEnabled()!=false){
@@ -157,7 +164,7 @@ public class PareoActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(lblPareo2 !=null){
-                    lblPareo2.setBackgroundResource(R.drawable.shape_jugabilidad2_general);
+                    lblPareo2.setBackgroundResource(R.drawable.shape_jugabilidad2_palabra);
                 }
                 TextView estate =view.findViewById(R.id.lblPareoTemplate);
                 if(estate.isEnabled()!=false){
@@ -232,8 +239,8 @@ public class PareoActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         //#Al momento de fallar la condicional se le asignara un shape blanco que mostrará en pantalla como una señal de no tener nada seleccionado
-                        lblPareo1.setBackgroundResource(R.drawable.shape_jugabilidad2_general);
-                        lblPareo2.setBackgroundResource(R.drawable.shape_jugabilidad2_general);
+                        lblPareo1.setBackgroundResource(R.drawable.shape_jugabilidad2_palabra);
+                        lblPareo2.setBackgroundResource(R.drawable.shape_jugabilidad2_palabra);
                         //#En las variables de los textviews guardada anteriormente al seleccionarlos, se le asigna null para que no haya problemas de vista
                         lblPareo1= null;
                         lblPareo2= null;

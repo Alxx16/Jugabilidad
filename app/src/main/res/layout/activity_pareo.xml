@@ -6,81 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".PareoActivity"
     android:orientation="vertical"
-    android:background="@drawable/ic_fondo">
+    android:background="@drawable/fondo">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/jugabilidad2_toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#071729"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:navigationIcon="?attr/homeAsUpIndicator" />
 
-    <ImageView
-        android:id="@+id/imgPareo1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:nextFocusLeft="@id/pgrPareo"
-        android:src="@drawable/ic_home_icono" />
-
+    <!-- Bara de Progreso -->
     <ProgressBar
-        android:id="@+id/pgrPareo"
+        android:id="@+id/jugabilidad2_pgrBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/imgPareo1"
-        android:indeterminateDrawable="@drawable/progress_bar_jugabilidades"
-        android:max="11"
-        android:min="1"
-        android:minWidth="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:max="10"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_below="@+id/jugabilidad2_toolBar"
+        android:minWidth="50dp"
         android:minHeight="50dp"
-
-        />
+        android:progressDrawable="@drawable/custom_progressbar" />
 
     <TextView
-        android:id="@+id/lblTitulo"
-        android:layout_width="wrap_content"
+        android:id="@+id/jugabilidad2_txtTitulo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imgPareo1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/jugabilidad2_pgrBar"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins_bold"
+        android:padding="10dp"
         android:text="Eligé la combinación correcta"
+        android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="30dp" />
+        android:textSize="27dp" />
 
     <ListView
         android:id="@+id/lstPareo1"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lblTitulo"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/jugabilidad2_txtTitulo"
+        android:layout_marginLeft="20dp"
         android:background="#00000000"
         android:backgroundTint="@color/white"
         android:cacheColorHint="#00000000"
         android:divider="#00000000"
-        android:dividerHeight="20dp" />
+        android:dividerHeight="45dp" />
 
     <ListView
         android:id="@+id/lstPareo2"
-        android:layout_width="140dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:divider="#00000000"
-        android:dividerHeight="20dp"
+        android:layout_below="@id/jugabilidad2_txtTitulo"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        android:background="#00000000"
         android:backgroundTint="@color/white"
-        android:layout_below="@id/lblTitulo"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:cacheColorHint="#00000000"/>
+        android:cacheColorHint="#00000000"
+        android:divider="#00000000"
+        android:dividerHeight="20dp"/>
 
     <Button
         android:id="@+id/jugabilidad2_modo_4_btn_confirmar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
         android:enabled="false"
+        android:fontFamily="@font/poppins_bold"
+        app:backgroundTint="@null"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_jugabilidad2_bntconfirmar"
         android:text="SIGUIENTE"
         />
 
