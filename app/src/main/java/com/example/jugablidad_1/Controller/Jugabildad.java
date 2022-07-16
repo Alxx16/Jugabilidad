@@ -19,6 +19,7 @@ import com.example.jugablidad_1.Service.ApiService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -317,21 +318,27 @@ public class Jugabildad {
     }
 
     public int obtenerPareoId() {
+        List<Integer> idPreguntas = new ArrayList<>();
         int id = 0;
         try{
             DbHelper dbHelper = new DbHelper(context,"proyecto_ds6");
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             if(db!=null){
                 String[] campos = new String[]{"pregunta_id"};
-                Cursor cursor = db.query("pareo",campos,null,null,null,null,null,"1");
+                Cursor cursor = db.query("pareo",campos,null,null,"pregunta_id",null,null,null);
                 if(cursor.moveToFirst()){
-                    id = cursor.getInt(0);
+                    db.close();
+                    do {
+                        idPreguntas.add(cursor.getInt(0));
+                        //#return id; retorna siempre la primera pregunta encontrada
+                    }while (cursor.moveToNext());
                 }
             }
         }catch (Exception e){
             int x = 0;
         }
-
+        Random rand = new Random();
+        id=idPreguntas.get(rand.nextInt(idPreguntas.size()));
         return id;
     }
 

@@ -96,6 +96,7 @@ public class Pareo {
                     contentValues.put("audio",this.getAudio());
                     db.insert("pareo",null,contentValues);
             }
+            db.close();
         }catch (Exception e){
             Toast.makeText(context,"Error en insercion =>"+e.getMessage(),Toast.LENGTH_LONG).show();
         }
@@ -111,6 +112,7 @@ public class Pareo {
                 String[] campos = new String[]{"texto","audio"};
                 Cursor cursor = db.query("pareo",campos,"pregunta_id= "+pregunta,null,null,null,null,null);
                 if(cursor.moveToFirst()){
+                    db.close();
                     do {
                         //#Asignar texto y audio al constructor de la clase Pareo(Entidad)
                         Pareo pareoo = new Pareo(
@@ -140,6 +142,7 @@ public class Pareo {
         String tabla = "pareo";
         try {
             db.delete(tabla, null, null);
+            db.close();
         } catch (Exception e) {}
     }
     //#Método encargado de obtener el id de la opción seleccionada por el texto en PareoActivity
@@ -152,6 +155,7 @@ public class Pareo {
                 String[] campos = new String[]{"orden_pareo"};
                 Cursor cursor = db.query("pareo",campos,"texto="+"'"+texto+"'",null,null,null,null,"1");
                 if(cursor.moveToFirst()){
+                    db.close();
                     do {
                         id = cursor.getInt(0);
                     }while (cursor.moveToNext());

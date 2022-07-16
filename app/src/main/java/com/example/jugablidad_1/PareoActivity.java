@@ -8,6 +8,7 @@ package com.example.jugablidad_1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -133,18 +134,11 @@ public class PareoActivity extends AppCompatActivity {
                     lblPareo1=view.findViewById(R.id.lblPareoTemplate);
                     //#Tomar el enlace del audio del textview
                     TextView a = view.findViewById(R.id.lblPareoAudio);
-                    //#Parsear el textview a un string para poder usarlo
-                    String audio = a.getText().toString();
-                    MediaPlayer mediaPlayer =new MediaPlayer();
-                    try {
-                        mediaPlayer.stop();
-                        //#parsear la variable audio a uri para poder buscarlá en la la carpeta del api
-                        mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/prueba.mp3"))));
-                        mediaPlayer.prepare();
-                        mediaPlayer.start();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    String audio = "http://192.168.0.4:8000/";
+                    //#Parsear el textview a un string para poder usarlo junto al host y puerto
+                    audio += a.getText().toString();
+                    //#Método donde se ejecutará el audio asincronicamente para no afectar a la aplicación principal
+                    AudioTask(audio);
                     //#Se le asignara el valor del del textview a variable textview para tomar el valor
                     TextView txt = (TextView) view.findViewById(R.id.lblPareoTemplate);
                     //#Parsear el textview de la variable txt a un string para poder usarlo
@@ -168,18 +162,9 @@ public class PareoActivity extends AppCompatActivity {
                     view.findViewById(R.id.lblPareoTemplate).setBackgroundResource(R.drawable.shape_jugabilidad2_seleccionaropcion);
                     lblPareo2 =view.findViewById(R.id.lblPareoTemplate);
                     TextView a = view.findViewById(R.id.lblPareoAudio);
-                    String audio = a.getText().toString();
-                    MediaPlayer mediaPlayer =new MediaPlayer();
-                    try {
-                        mediaPlayer.stop();
-                        mediaPlayer.setDataSource(PareoActivity.this,Uri.parse(String.valueOf(Uri.parse("http://192.168.0.4:8000/prueba.mp3"))));
-                        mediaPlayer.prepare();
-                        mediaPlayer.start();
-                    } catch (FileNotFoundException e){
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    String audio = "http://192.168.0.4:8000/";
+                    audio += a.getText().toString();
+                    AudioTask(audio);
                     TextView txt = (TextView) view.findViewById(R.id.lblPareoTemplate);
                     opcPareo2 = txt.getText().toString();
                     idPareo2= pareo.obtenerIdPareo(opcPareo2,getApplicationContext());
@@ -206,6 +191,7 @@ public class PareoActivity extends AppCompatActivity {
                 if(avance == 5){ ;
                     //#Se activará el botón para seguir a la próxima pregunta
                     btn_siguiente.setEnabled(true);
+                    btn_siguiente.setBackgroundResource(R.drawable.shape_jugabilidad2_bntconfirmar);
                 }
                 //#Se le asigno un momento para que se activará estas instrucciones
                 TimerTask timerTask = new TimerTask() {
@@ -225,7 +211,7 @@ public class PareoActivity extends AppCompatActivity {
                     }
                 };
                 Timer time = new Timer();
-                time.schedule(timerTask, 250);
+                time.schedule(timerTask, 120);
             }else{
                 //#Al momento de fallar la condicional se le asignara un shape rojo que mostrará en pantalla como una señal de
                 //#Incorrecto
@@ -252,8 +238,25 @@ public class PareoActivity extends AppCompatActivity {
                     }
                 };
                 Timer time = new Timer();
-                time.schedule(timerTask, 250);
+                time.schedule(timerTask, 120);
             }
+        }
+    }
+
+    private void AudioTask (String audio){
+        MediaPlayer mediaPlayer =new MediaPlayer();
+        try {
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mediaPlayer.setDataSource(audio);
+            mediaPlayer.prepareAsync();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mediaPlayer.start();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
